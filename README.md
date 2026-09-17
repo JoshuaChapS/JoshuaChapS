@@ -26,6 +26,18 @@ audit replaced bare SHA-256 password hashing with Argon2id via libsodium, and ad
 rotation with server-side revocation. CI runs three build jobs under `-Wall -Wextra` on every pull
 request, and `main` won't merge without all three green.
 
+**[sobres](https://github.com/JoshuaChapS/sobres)** · C++17, Qt 6, SQLite
+
+A personal-finance app I actually use, and the only place my two degrees meet. Goal projection is a
+future-value annuity solved for the contribution and for the number of periods, with the period rate
+taken by effective-rate equivalence rather than by dividing the annual rate — dividing assumes simple
+capitalization and quietly underestimates the interest. Money is 64-bit integer cents everywhere;
+balances are never stored, only recomputed from the movements, so the number stays auditable.
+Percentage splits use largest-remainder allocation, so a split can't lose or invent a cent. The Excel
+export is written by hand — the ZIP container and its CRC-32 — about 300 lines, verified against an
+independent reader. 114 tests under a test framework I wrote, and the core is deliberately Qt-free so
+the math is testable without the GUI.
+
 **[ctf-writeups](https://github.com/JoshuaChapS/ctf-writeups)** · binary exploitation, pwntools
 
 Seven writeups: picoCTF buffer overflow 0 through 3, plus ret2win, split and callme from ROP
